@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Contacts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="contacts.html">
+                     Pilot Fiber</a>
+                 </div>
+                 <ul class="nav navbar-nav">
+                    <li class="active"><a href="contact.html">Contacts</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <strong>Vaibhav</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center"><img class="img-circle" src="images/mypic.jpg" width=100 height=100>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong><h4>Vaibhav Aggarwal</h4></strong></p>
+                                            <p class="text-left"><strong>New York University</strong></p>
+                                            <p class="text-left small">vaibhav.aggarwal@nyu.edu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider navbar-login-session-bg"></li>
+                            <li><a href="https://www.linkedin.com/in/vaibhav93/" target="_blank">Linkedin <span class="pull-right"><img src="images/In-2C-108px-R.png" width=20 height=20></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="https://github.com/vaibhavagg12393" target="_blank">Github <span class="pull-right"><img src="images/GitHub-Mark-120px-plus.png" width=20 height=20></span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="https://twitter.com/vaibhavagg12393" target="_blank">Twitter <span class="pull-right"><img src="images/Twitter_Logo_Blue.png" width=30 height=30></span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container" style="height: 300px; overflow:auto;">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </table>
+        </div>
+        <script>
+            var oldContacts = JSON.parse(localStorage.getItem('Contacts')) || [];
+            var contact=oldContacts;
+            $(document).ready(function () {
+                var json = contact;
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].name + "</td>");
+                    tr.append("<td>" + json[i].phone + "</td>");
+                    $('table').append(tr);
+                }
+            });
+        </script>
+    </body>
+</html>
