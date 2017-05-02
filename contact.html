@@ -1,0 +1,105 @@
+<!doctype html>
+<!--
+A junior developer has written the following contact-management app. The goal
+of the app is to create a list of contacts. Hitting "save" should console.log
+the list of contact objects. Each object should have name and phone.
+
+The junior dev noticed that when you add contacts and hit save, it works. But
+if you hit save again, it breaks.
+
+Part 1: Find and fix the problem with this app. Why does it break when you
+hit save twice? Explain the problem and your solution.
+
+Part 2: Rewrite this app, and make it actually save the contacts list in
+localStorage. You can use any libraries or frameworks you want.
+
+Part 3: We need to be able to have multiple phone numbers per contact. Add
+this feature to the app.
+
+Part 4 (bonus): re-style this app so it's a bit more presentable. You can
+use a CSS framework such as Bootstrap if you want to. You can also make use
+of frontend javascript frameworks like VueJS, AngularJS, or React.
+-->
+<html>
+<head>
+    <title>Contacts Manager</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="contacts.html">
+               Pilot Fiber</a>
+           </div>
+           <ul class="nav navbar-nav">
+              <li class="active"><a href="contact.html">Contacts</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>Vaibhav</strong>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <div class="navbar-login">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <p class="text-center"><img class="img-circle" src="images/mypic.jpg" width=100 height=100>
+                                    </p>
+                                </div>
+                                <div class="col-lg-8">
+                                    <p class="text-left"><strong><h4>Vaibhav Aggarwal</h4></strong></p>
+                                    <p class="text-left"><strong>New York University</strong></p>
+                                    <p class="text-left small">vaibhav.aggarwal@nyu.edu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="divider navbar-login-session-bg"></li>
+                    <li><a href="https://www.linkedin.com/in/vaibhav93/" target="_blank">Linkedin <span class="pull-right"><img src="images/In-2C-108px-R.png" width=20 height=20></span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://github.com/vaibhavagg12393" target="_blank">Github <span class="pull-right"><img src="images/GitHub-Mark-120px-plus.png" width=20 height=20></span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="https://twitter.com/vaibhavagg12393" target="_blank">Twitter <span class="pull-right"><img src="images/Twitter_Logo_Blue.png" width=30 height=30></span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div style="height: 300px; overflow:auto;">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+        </tr>
+    </table>
+    <script>
+    var oldContacts = JSON.parse(localStorage.getItem('Contacts')) || [];
+    var contact=oldContacts;
+    $(document).ready(function () {
+        var json = contact;
+        var tr;
+        for (var i = 0; i < json.length; i++) {
+            tr = $('<tr/>');
+            tr.append("<td>" + json[i].name + "</td>");
+            if (typeof json[i].phone !== 'string') {
+                for (var j = 0; j < json[i].phone.length; j++) {
+                    tr.append("<td>" + json[i].phone[j] + "</td>");
+                }}
+                else {
+                    tr.append("<td>" + json[i].phone + "</td>");
+                }
+                $('table').append(tr);
+            }
+        });
+            </script>
+        </body>
+        </html>

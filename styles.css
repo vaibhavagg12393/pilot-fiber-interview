@@ -1,0 +1,38 @@
+.navbar-login
+{
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.icon-size
+{
+  font-size: 87px;
+}
+
+.table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        float:left;
+       background-color: #f39c12;
+       border-color:#e67e22;
+      }
+    }
+  }
+}
