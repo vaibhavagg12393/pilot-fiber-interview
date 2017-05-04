@@ -4,12 +4,14 @@
         <title>Contacts</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
+        <!-- Code Starts for NavBar and DropDown on Top Right-->
+
         <nav class="navbar navbar-inverse ">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -17,7 +19,7 @@
                      Pilot Fiber</a>
                  </div>
                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="contact.html">Contacts</a></li>
+                    <li class="active"><a href="contactTable.html">Contacts</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -53,15 +55,30 @@
                 </ul>
             </div>
         </nav>
-        <div class="container" style="height: 300px; overflow:auto;">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
-                </tr>
-            </table>
+
+        <!-- Code Ends for NavBar and DropDown on Top Right-->
+
+        <div class="container">
+            <div class="row">
+                <div class="pull-left">
+                <h3>Scroll the Contact list</h3></div>
+                <div class="pull-right">
+                <a role="button" class="btn btn-primary next" href="contacts.html">Add Contact</a>
+            </div>
+            </div>
+            <div class="container" style="height: 300px; overflow:auto;">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                    </tr>
+                </table>
+            </div>
         </div>
+
         <script>
+
+            // Retrieve Contact List from LocalStorage and print all contacts in a Scrollable table
             var oldContacts = JSON.parse(localStorage.getItem('Contacts')) || [];
             var contact=oldContacts;
             $(document).ready(function () {

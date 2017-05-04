@@ -21,131 +21,161 @@ use a CSS framework such as Bootstrap if you want to. You can also make use
 of frontend javascript frameworks like VueJS, AngularJS, or React.
 -->
 <html>
-    <head>
-        <title>Pilot Fiber Contacts Manager</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/styles.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse ">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        Pilot Fiber
+<head>
+    <title>Pilot Fiber Contacts Manager</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Code Starts for NavBar and Top Right DropDown Menu -->
+
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Pilot Fiber
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="contactTable.html">Contacts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>Vaibhav</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="contactTable.html">Contacts</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span>
-                            <strong>Vaibhav</strong>
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="navbar-login">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <p class="text-center"><img class="img-circle" src="images/mypic.jpg" width=100 height=100>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <p class="text-left"><strong><h4>Vaibhav Aggarwal</h4></strong></p>
-                                            <p class="text-left"><strong>New York University</strong></p>
-                                            <p class="text-left small">vaibhav.aggarwal@nyu.edu</p>
-                                        </div>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center"><img class="img-circle" src="images/mypic.jpg" width=100 height=100>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><strong><h4>Vaibhav Aggarwal</h4></strong></p>
+                                        <p class="text-left"><strong>New York University</strong></p>
+                                        <p class="text-left small">vaibhav.aggarwal@nyu.edu</p>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="divider navbar-login-session-bg"></li>
-                            <li><a href="https://www.linkedin.com/in/vaibhav93/" target="_blank">Linkedin <span class="pull-right"><img src="images/In-2C-108px-R.png" width=20 height=20></span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="https://github.com/vaibhavagg12393" target="_blank">Github <span class="pull-right"><img src="images/GitHub-Mark-120px-plus.png" width=20 height=20></span></a></li>
-                            <li class="divider"></li>
-                            <li><a href="https://twitter.com/vaibhavagg12393" target="_blank">Twitter <span class="pull-right"><img src="images/Twitter_Logo_Blue.png" width=30 height=30></span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class = "container">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
-                </tr>
-                <tbody id="contacts">
-                </tbody>
-                <tr>
-                    <td colspan="2">
-                        <button id="addButton">Add contact</button>
-                        <button id="save">Save</button>
-                    </td>
-                </tr>
-            </table>
+                            </div>
+                        </li>
+                        <li class="divider navbar-login-session-bg"></li>
+                        <li><a href="https://www.linkedin.com/in/vaibhav93/" target="_blank">Linkedin <span class="pull-right"><img src="images/In-2C-108px-R.png" width=20 height=20></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://github.com/vaibhavagg12393" target="_blank">Github <span class="pull-right"><img src="images/GitHub-Mark-120px-plus.png" width=20 height=20></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://twitter.com/vaibhavagg12393" target="_blank">Twitter <span class="pull-right"><img src="images/Twitter_Logo_Blue.png" width=30 height=30></span></a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <script>
-            var oldContacts = JSON.parse(localStorage.getItem('Contacts')) || [];
-            var contact=oldContacts;
-            var person = {};
-            addButton.addEventListener('click', function () {
+    </nav>
 
-                <!-- my code -->
+    <!-- Code Ends for NavBar and DropDown Menu -->
+    
+    <div class = "container">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+            <tbody id="contacts">
+            </tbody>
+            <tr>
+                <td colspan="2">
+                    <button type="button" class="btn btn-primary" id="addButton">Add contact</button>
+                    <button type="button" class="btn btn-primary" id="save">Save</button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-                var tr = document.createElement('tr');
-                contacts.appendChild(tr);
-                var td = document.createElement('td');
-                tr.appendChild(td);
-                var input = document.createElement('input')
-                input.setAttribute("placeholder","Type name here");
-                td.appendChild(input);
+    <script>
+
+        // TASK 2: Retrieve contact list from localStorage
+        var oldContacts = JSON.parse(localStorage.getItem('Contacts')) || [];
+        var contact_list=oldContacts;
+        addButton.addEventListener('click', function () {
+
+            <!-- my code -->
+
+            var tr = document.createElement('tr');
+            contacts.appendChild(tr);
+            var btn = document.createElement('input');
+
+            // TASK 3: create button to add multiple phone numbers
+            btn.type='button';
+            btn.value="+";
+            btn.className="btn btn-primary btn-circle";
+            btn.onclick = (function() {
                 td = document.createElement('td');
-                var input = document.createElement('input');
+                var input = document.createElement('input')
+                input.className="form-control";
                 input.setAttribute("placeholder","9726931515");
                 input.setAttribute("maxLength","10");
                 td.appendChild(input);
-                var btn = document.createElement('input');
-                btn.type='button';
-                btn.value="+";
-                btn.onclick = (function() {
-                    td = document.createElement('td');
-                    var input = document.createElement('input')
-                    input.setAttribute("placeholder","9726931515");
-                    input.setAttribute("maxLength","10");
-                    td.appendChild(input);
-                    tr.appendChild(td);
-                });
-                td.append(btn);
                 tr.appendChild(td);
-
-                <!-- code ends -->
-
-                            // var tr = contacts.appendChild(document.createElement('tr'));
-                            // var td = tr.appendChild(document.createElement('td'));
-                            // td.appendChild(document.createElement('input'));
-                            // td = tr.appendChild(document.createElement('td'));
-                            // td.appendChild(document.createElement('input'));
             });
+            var td = document.createElement('td');
+            td.append(btn);
+            tr.appendChild(td);
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var input = document.createElement('input')
+            input.className="form-control";
+            input.setAttribute("placeholder","Type name here");
+            td.appendChild(input);
+            td = document.createElement('td');
+            var input = document.createElement('input');
+            input.className="form-control";
+            input.setAttribute("placeholder","9726931515");
+            input.setAttribute("maxLength","10");
+            td.appendChild(input);
+            tr.appendChild(td);
 
-            save.addEventListener('click', function () {
+            <!-- code ends -->
+
+            // var tr = contacts.appendChild(document.createElement('tr'));
+            // var td = tr.appendChild(document.createElement('td'));
+            // td.appendChild(document.createElement('input'));
+            // td = tr.appendChild(document.createElement('td'));
+            // td.appendChild(document.createElement('input'));
+        });
+
+        save.addEventListener('click', function () {
+
+            // TASK 1: The original code was using contacts as tbody id and also as array var, hence change var 'contacts' to 'contact_list' for the array
+
+            if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem('Contacts', JSON.stringify(contact_list));
+                    var retrievedContracts = localStorage.getItem('Contacts');
+                    console.log('Contacts: ', JSON.parse(retrievedContracts));
+            }
+            var rowindex = [];
+            Array.prototype.map.call(contacts.children, function (child) {
                 
-                // change var 'constants' to 'constant'
-                
-                Array.prototype.map.call(contacts.children, function (child) {
-                person.name = child.children[0].children[0].value;
+                var person = {};
+
+                // Person Name Validation
+                person.name = child.children[1].children[0].value;
                 if(person.name=="") {
                     alert("Oops! I think you forgot to type your name.");
                     return false;
                 }
+
+                // Phone Number Validation
+                person.phone = [];
                 var phone = "";
-                for (var i = 1; i < child.children.length ; i++) {
+                var phoneno = /^\d{10}/;
+                for (var i = 2; i < child.children.length ; i++) {
                     phone = child.children[i].children[0].value;
                     if (phone=="") {
                         alert("Oops! I think you forgot to type your phone number.");
@@ -155,22 +185,41 @@ of frontend javascript frameworks like VueJS, AngularJS, or React.
                         alert("Phone number should be of 10 digits (1234567890)");
                         return false;
                     }
+                    if (!phone.match(phoneno)) {
+                        alert("Phone number should contain only digits");
+                        return false;
+                    }
+                    person.phone.push(phone);
                 }
-                person.phone = [];
-                for (var i = 1; i < child.children.length ; i++) {
-                    person.phone.push(child.children[i].children[0].value);
+                if (!contact_list.length) {
+                    contact_list = [];
                 }
-                if (!contact.length) {
-                    contact = [];
-                }
-                contact.push(person);
-                            });
+
+                // TASK 1: Change variable name to 'contact_list'. The tbody ID and array variable name can NOT be same.
+                contact_list.push(person);
+                console.log(person.name+" has been added to your contacts");
+
+                // Store index of rows with all correct data
+                rowindex.push((child.rowIndex)-1); 
+
+                // TASK 2: Check localStorage, store contacts into localStorage, print all contacts from localStorage
                 if (typeof(Storage) !== "undefined") {
-                    localStorage.setItem('Contacts', JSON.stringify(contact));
+                    localStorage.setItem('Contacts', JSON.stringify(contact_list));
                     var retrievedContracts = localStorage.getItem('Contacts');
                     console.log('Contacts: ', JSON.parse(retrievedContracts));
                 }
             });
-        </script>
-    </body>
+
+            // delete the rows which have been saved into localStorage
+            var i = 0;
+            if(rowindex.length) {
+                for (var k = 0 ; k < rowindex.length ; k++) {
+                    deleteIndex = rowindex[k]-i;
+                    contacts.deleteRow(deleteIndex);
+                    i++;
+                }
+            }
+        });
+    </script>
+</body>
 </html>
